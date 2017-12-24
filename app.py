@@ -20,25 +20,16 @@ class PublicNeeds(object):
     def service_information(self, region):
         requested_jsons = self.requesting()
         without_executor = []
+        output_dict = {}
         for single_json in requested_jsons:
             for orders in single_json["Dataobject"]:
                 if orders["data"]["zamowienia_publiczne.zamawiajacy_wojewodztwo"] == region:
-                    print(orders["data"]["zamowienia_publiczne.nazwa"])
-                    print(orders["data"]["zamowienia_publiczne_rodzaje.nazwa"])
-                    if orders["data"]["zamowienia_publiczne.wykonawca_str"] == "":
-                        print("brak wykonawcy")
-                    else:
-                        print(orders["data"]["zamowienia_publiczne.wykonawca_str"])
-                    print("")
-                    print(orders["data"]["zamowienia_publiczne.zamawiajacy_wojewodztwo"])
+                    output_dict[orders["data"]["zamowienia_publiczne.nazwa"]] = {'rodzaj robot': orders["data"]["zamowienia_publiczne_rodzaje.nazwa"], 'wykonawca' : orders["data"]["zamowienia_publiczne.wykonawca_str"]}
+        return output_dict
 
 def main():
     print('done')
     pubs = PublicNeeds()
-    #print(pubs.requesting())
-    print(pubs.service_information("podlaskie"))
-    for x in range(1,4):
-        print(x)
 
 if __name__ == '__main__':
     main()
