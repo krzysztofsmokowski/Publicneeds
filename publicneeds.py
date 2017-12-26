@@ -25,7 +25,7 @@ class PublicNeeds(object):
         return(requested_pages)
 
     def service_information(self, region):
-        requested_jsons = self.requesting()
+        requested_jsons = self.requesting_from_api()
         json_for_api = {}
         for single_json in requested_jsons:
             for orders in single_json["Dataobject"]:

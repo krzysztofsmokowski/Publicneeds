@@ -1,0 +1,8 @@
+version: '2' 
+
+services:
+  publicneeds:
+    build: .
+    ports:
+        - "8000:80"
+
