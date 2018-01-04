@@ -1,8 +1,0 @@
-version: '2' 
-
-services:
-  publicneeds:
-    build: .
-    ports:
-        - "80:80"
-
